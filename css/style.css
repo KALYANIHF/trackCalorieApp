@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+} /*# sourceMappingURL=style.css.map */
+.darkmode {
+  display: none;
+  cursor: pointer;
+}
+.active {
+  display: inline-block;
+  color: white;
+}
