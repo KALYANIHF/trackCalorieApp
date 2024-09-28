@@ -124,7 +124,6 @@ class TrackCalorie {
       document
         .querySelector("#calories-limit")
         .parentElement.parentElement.classList.toggle("bg-dark");
-
       document
         .querySelector("#calories-limit")
         .parentElement.parentElement.classList.toggle("bg-white");
