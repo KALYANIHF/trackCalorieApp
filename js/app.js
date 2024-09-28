@@ -49,6 +49,9 @@ class TrackCalorie {
     document
       .querySelector("#filter-workouts")
       .addEventListener("keyup", this.#filterWorkouts.bind(this)); //add event listener for filtering workouts
+    document
+      .querySelector(".darkBtn")
+      .addEventListener("click", this.#toggleDarkMode.bind(this));
   }
 
   addMeal(e) {
@@ -109,6 +112,52 @@ class TrackCalorie {
     this.#render();
   }
 
+  // implement dark mode
+  #toggleDarkMode(e) {
+    if (e.target.classList.contains("fa-regular")) {
+      document.querySelector("body").style.transition = "1s ease"; //add transition to the body
+      document.querySelector("body").classList.toggle("bg-dark");
+      document.querySelector("header").classList.toggle("bg-secondary");
+      document
+        .querySelector("header")
+        .firstElementChild.classList.toggle("text-dark");
+      document
+        .querySelector("#calories-limit")
+        .parentElement.parentElement.classList.toggle("bg-dark");
+
+      document
+        .querySelector("#calories-limit")
+        .parentElement.parentElement.classList.toggle("bg-white");
+      document
+        .querySelector("#calories-limit")
+        .parentElement.parentElement.classList.toggle("text-white");
+      document
+        .querySelector("#calories-total")
+        .parentElement.parentElement.classList.toggle("bg-secondary");
+      document
+        .querySelector("#calories-total")
+        .parentElement.parentElement.classList.toggle("text-white");
+      document
+        .querySelector("#calorie-progress")
+        .classList.toggle("bg-secondary");
+
+      if (e.target.classList.contains("fa-sun")) {
+        e.target.classList.remove("fa-sun");
+        e.target.classList.toggle("text-dark");
+        e.target.classList.add("fa-moon"); //change the icon to moon
+        document.querySelectorAll(".btn-outline-light").forEach((e) => {
+          e.classList.toggle("btn-outline-dark");
+        });
+      } else {
+        e.target.classList.toggle("text-dark");
+        e.target.classList.remove("fa-moon");
+        e.target.classList.add("fa-sun"); //change the icon to sun
+        document.querySelectorAll(".btn-outline-dark").forEach((e) => {
+          e.classList.toggle("btn-outline-dark");
+        });
+      }
+    }
+  }
   // filter meals
   #filterMeals(e) {
     const filterValue = e.target.value.toLowerCase(); //get the value of the input and convert to lowercase
